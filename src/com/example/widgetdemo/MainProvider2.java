@@ -36,28 +36,4 @@ public class MainProvider2 extends AppWidgetProvider {
         super.onUpdate(context, appWidgetManager, appWidgetIds);  
     }  
 
-
-    private class MyTime extends TimerTask{  
-        RemoteViews remoteViews;  
-        AppWidgetManager appWidgetManager;  
-        ComponentName thisWidget;  
-
-        public MyTime(Context context,AppWidgetManager appWidgetManager){  
-            this.appWidgetManager = appWidgetManager;  
-            remoteViews = new RemoteViews(context.getPackageName(),R.layout.main);  
-
-            thisWidget = new ComponentName(context,MainProvider2.class);  
-        }  
-        public void run() {  
-
-            Date date = new Date();  
-            Calendar calendar = new GregorianCalendar(2010,06,11);  
-            long days = (((calendar.getTimeInMillis()-date.getTime())/1000))/86400;  
-            remoteViews.setTextViewText(R.id.wordcup, "距离南非世界杯还有" + days+"天");  
-            appWidgetManager.updateAppWidget(thisWidget, remoteViews);  
-
-        }  
-
-    }  
-
 }
